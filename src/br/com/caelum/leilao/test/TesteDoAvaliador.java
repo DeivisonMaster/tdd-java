@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,6 +28,13 @@ public class TesteDoAvaliador {
 		joao = new Usuario("João");
 		maria = new Usuario("Maria");
 		jose = new Usuario("Jose");
+	}
+	
+	@Test(expected = RuntimeException.class) // exceção esperada
+	public void naoDeveAvaliarLeiloesSemNenhumLanceDado() {
+		Leilao leilao = new CriadorDeLeilao().comADescricao("Playstation 3 novo").criaEAvaliaLeilao();
+		
+		leiloeiro.avalia(leilao);
 	}
 	
 
